@@ -1,0 +1,1108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bosko Property Management</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* Brand green — primary actions, links, active states, "positive" data (savings, revenue) */
+    --color-sage:#4a6b3e;
+    --color-sage-deep:#2f4527;
+    --color-sage-deeper:#22331c;
+    --color-sage-pale:#dfe6d0;
+    /* Terracotta — reserved for cost/attention/urgency: premium pricing, "cost of self-managing", alerts */
+    --color-terracotta:#c1592f;
+    --color-obsidian:#faf6f0;
+    --color-abyss:#f4ede1;
+    --color-graphite:#f2ebdf;
+    --color-steel:#e7dcc9;
+    --color-silver:#8a8276;
+    --color-fog:#7a7d76;
+    --color-ash:#6b6358;
+    --color-cloud:#2a2622;
+    --color-pure:#2a2622;
+    --color-void:#000000;
+    --font-display:'Fraunces', 'Playfair Display', serif;
+    --font-sans:'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --font-mono:'Roboto Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    /* Type scale — every heading/stat/label size on the page maps to one of these */
+    --fs-hero:64px;
+    --fs-h2:56px;
+    --fs-h2-sm:36px;
+    --fs-stat:32px;
+    --fs-h3:22px;
+    --fs-h3-sm:18px;
+    --fs-label:12px;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  /* Type scale utilities — every heading/stat on the page uses one of these, nothing else */
+  .fs-hero{ font-size:var(--fs-hero); line-height:0.94; }
+  .fs-h2{ font-size:var(--fs-h2); line-height:0.9; }
+  .fs-h2-sm{ font-size:var(--fs-h2-sm); line-height:1.1; }
+  .fs-stat{ font-size:var(--fs-stat); }
+  .fs-h3{ font-size:var(--fs-h3); line-height:1.2; }
+  .fs-h3-sm{ font-size:var(--fs-h3-sm); line-height:1.3; }
+  @media (max-width:900px){
+    .fs-hero{ font-size:44px; }
+    .fs-h2{ font-size:38px; }
+    .fs-h2-sm{ font-size:28px; }
+    .fs-stat{ font-size:26px; }
+  }
+  body{
+    background:var(--color-obsidian);
+    color:var(--color-pure);
+    font-family:var(--font-sans);
+    margin:0;
+    -webkit-font-smoothing:antialiased;
+  }
+  .font-display{ font-family:var(--font-display); font-weight:300; }
+  .font-mono{ font-family:var(--font-mono); }
+  .tracking-label{ letter-spacing:0.182em; }
+
+  /* ---- Nav ---- */
+  .nav-glass{
+    background:rgba(250,246,240,0.8);
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+    border-bottom:1px solid rgba(42,38,34,0.08);
+  }
+  .btn-ghost{
+    background:transparent;
+    border:1px solid rgba(42,38,34,0.35);
+    color:var(--color-pure);
+    border-radius:8px;
+    padding:12px 18px;
+    font-size:16px;
+    transition:background-color .2s ease, color .2s ease;
+  }
+  .btn-ghost:hover{ background:rgba(42,38,34,0.06); }
+  .btn-primary{
+    background:var(--color-sage-deep);
+    color:#fff;
+    border-radius:8px;
+    padding:12px 18px;
+    font-size:16px;
+    font-weight:400;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:background-color .2s ease, transform .2s ease;
+  }
+  .btn-primary:hover{ background:var(--color-sage-deeper); }
+  .btn-card-cta{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    width:100%;
+    background:var(--color-sage-deep);
+    color:#fff;
+    border-radius:10px;
+    padding:12px 16px;
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    transition:background-color .2s ease;
+  }
+  .btn-card-cta:hover{ background:var(--color-sage-deeper); }
+  .nav-icon-btn{
+    background:rgba(42,38,34,0.05);
+    border:1px solid rgba(42,38,34,0.12);
+    border-radius:8px;
+    width:40px; height:40px;
+    display:flex; align-items:center; justify-content:center;
+    transition:background-color .2s ease;
+  }
+  .nav-icon-btn:hover{ background:rgba(42,38,34,0.1); }
+
+  /* ---- Hero sky ---- */
+  .hero-sky{
+    background:
+      radial-gradient(ellipse 900px 500px at 30% 15%, rgba(210,230,180,0.55), transparent 60%),
+      radial-gradient(ellipse 700px 400px at 75% 30%, rgba(190,220,170,0.45), transparent 60%),
+      radial-gradient(ellipse 1000px 600px at 50% 85%, rgba(160,200,150,0.4), transparent 65%),
+      linear-gradient(rgb(250,246,240), rgb(240,244,228) 30%, rgb(214,229,198) 60%, rgb(138,176,124) 100%);
+  }
+  .hero-cloud{
+    position:absolute;
+    background:radial-gradient(closest-side, rgba(180,212,155,0.5), rgba(180,212,155,0) 70%);
+    filter:blur(18px);
+    pointer-events:none;
+  }
+  /* Left-to-right reveal works once text sits beside the photo (lg:flex-row).
+     Below that the text column spans full width, so a uniform scrim keeps it legible
+     against busy photo content instead of only the left edge. */
+  .hero-scrim{
+    background:linear-gradient(100deg, rgba(250,246,240,0.97) 0%, rgba(250,246,240,0.9) 40%, rgba(250,246,240,0.15) 62%, rgba(250,246,240,0.05) 100%);
+  }
+  @media (max-width:1023px){
+    .hero-scrim{ background:rgba(250,246,240,0.82); }
+  }
+
+  /* ---- Eyebrow pill ---- */
+  .pill-badge{
+    display:inline-flex;
+    align-items:center;
+    background:rgba(255,255,255,0.75);
+    border:1px solid rgba(74,107,62,0.25);
+    box-shadow:0 4px 16px rgba(47,69,39,0.08);
+    border-radius:1440px;
+    padding:11px 32px;
+    font-family:var(--font-mono);
+    font-size:13px;
+    font-weight:500;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--color-sage);
+  }
+
+  /* ---- Laurel ---- */
+  .laurel-badge{
+    display:flex; align-items:center; gap:14px;
+    background:rgba(255,255,255,0.6);
+    border:1px solid rgba(74,107,62,0.2);
+    box-shadow:0 4px 16px rgba(47,69,39,0.06);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-radius:16px;
+    padding:10px 20px;
+  }
+  .laurel-text{ text-align:center; }
+  .laurel-text .name{ font-family:var(--font-display); font-weight:300; font-size:20px; color:var(--color-pure); }
+  .laurel-text .sub{ font-family:var(--font-mono); font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:var(--color-ash); margin-top:2px; }
+
+  /* ---- Category / feature cards (stay dark as accent surfaces) ---- */
+  .card-30{ border-radius:30px; }
+  .card-tile{
+    padding:32px;
+    border-radius:30px;
+    color:#fff;
+    position:relative;
+    /* clip, not hidden: hidden creates a scroll container that would hijack the
+       view() timeline of any reveal target inside (e.g. the mock panels). */
+    overflow:clip;
+  }
+  /* Two tile colors, two meanings — sage for revenue/positive outcomes, terracotta for cost/risk/urgency */
+  .tile-sage{ background:linear-gradient(160deg,#7fa088 0%, #4d6b56 45%, #263429 100%); }
+  .tile-terracotta{ background:linear-gradient(160deg,#d99a6e 0%, #b4582f 55%, #5c2c16 100%); }
+  .tile-featured{
+    box-shadow:0 0 0 2px var(--color-sage), 0 32px 64px -28px rgba(47,69,39,0.4);
+  }
+  .area-chip{
+    display:inline-block;
+    background:var(--color-graphite);
+    border:1px solid rgba(42,38,34,0.1);
+    border-radius:9999px;
+    padding:9px 18px;
+    font-family:var(--font-mono);
+    font-size:13px;
+    color:var(--color-pure);
+  }
+
+  .mono-label{
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:rgba(255,255,255,0.75);
+  }
+
+  .section-gap{ margin-top:80px; }
+
+  .card-dark{
+    background:var(--color-graphite);
+    border:1px solid rgba(42,38,34,0.08);
+    border-radius:16px;
+    padding:32px;
+    box-shadow:0 24px 48px -32px rgba(90,50,20,0.12);
+  }
+  .mock-panel{ background:rgba(0,0,0,0.35); border:1px solid rgba(255,255,255,0.08); border-radius:16px; }
+
+  /* ---- Guarantees ledger (deliberately not a card grid — breaks the section-template repetition) ---- */
+  .guarantee-row{
+    display:flex;
+    align-items:flex-start;
+    gap:16px;
+    padding:28px;
+    border-bottom:1px solid rgba(42,38,34,0.08);
+  }
+  .guarantee-row:last-child{ border-bottom:none; }
+  @media (min-width:640px){
+    .guarantee-col-first{ border-right:1px solid rgba(42,38,34,0.08); }
+  }
+
+  /* ---- Search ---- */
+  #search-panel.hidden{ display:none; }
+
+  /* ---- Calculator ---- */
+  .calc-panel{
+    background:var(--color-graphite);
+    border:1px solid rgba(42,38,34,0.1);
+    border-radius:24px;
+    padding:40px;
+    box-shadow:0 24px 48px -32px rgba(90,50,20,0.16);
+  }
+  .calc-field label{
+    display:block;
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--color-ash);
+    margin-bottom:8px;
+  }
+  .calc-field .calc-input-wrap{
+    display:flex;
+    align-items:center;
+    background:#fff;
+    border:1px solid rgba(42,38,34,0.15);
+    border-radius:12px;
+    padding:0 16px;
+  }
+  .calc-field .calc-input-wrap span{
+    font-family:var(--font-mono);
+    color:var(--color-ash);
+    font-size:16px;
+  }
+  .calc-field input{
+    width:100%;
+    border:none;
+    outline:none;
+    background:transparent;
+    padding:14px 8px;
+    font-family:var(--font-mono);
+    font-size:16px;
+    color:var(--color-pure);
+  }
+  .plan-toggle{
+    display:inline-flex;
+    background:#fff;
+    border:1px solid rgba(42,38,34,0.15);
+    border-radius:9999px;
+    padding:4px;
+  }
+  .plan-toggle button{
+    font-family:var(--font-mono);
+    font-size:12px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--color-ash);
+    padding:10px 20px;
+    border-radius:9999px;
+    transition:background-color .2s ease, color .2s ease;
+  }
+  .plan-toggle button.active{
+    background:var(--color-sage);
+    color:#fff;
+  }
+  .calc-result-card{
+    background:#fff;
+    border:1px solid rgba(42,38,34,0.1);
+    border-radius:16px;
+    padding:24px;
+  }
+  .calc-result-card .val{
+    font-family:var(--font-display);
+    font-weight:300;
+    font-size:var(--fs-stat);
+    line-height:1.1;
+  }
+  .calc-savings-banner{
+    background:linear-gradient(135deg, rgba(111,174,130,0.18), rgba(111,174,130,0.08));
+    border:1px solid rgba(111,174,130,0.4);
+    border-radius:16px;
+    padding:28px;
+  }
+
+  /* ---- Contact form ---- */
+  .form-field label{
+    display:block;
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--color-ash);
+    margin-bottom:8px;
+  }
+  .form-field input, .form-field textarea{
+    width:100%;
+    background:#fff;
+    border:1px solid rgba(42,38,34,0.15);
+    border-radius:12px;
+    padding:14px 16px;
+    font-family:var(--font-sans);
+    font-size:15px;
+    color:var(--color-pure);
+    outline:none;
+    resize:vertical;
+    transition:border-color .2s ease;
+  }
+  .form-field input:focus, .form-field textarea:focus{ border-color:var(--color-sage-deep); }
+
+  /* ---- FAQ accordion ---- */
+  .faq-item summary{
+    cursor:pointer;
+    list-style:none;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+  }
+  .faq-item summary::-webkit-details-marker{ display:none; }
+  .faq-item summary::marker{ content:''; }
+  .faq-item .faq-chevron{ transition:transform .2s ease; flex-shrink:0; }
+  .faq-item[open] .faq-chevron{ transform:rotate(180deg); }
+  .faq-item .faq-answer{ margin-top:12px; }
+
+  /* ---- Plan comparison table (reuses .faq-item accordion + .card-dark shell) ---- */
+  .compare-table{ width:100%; border-collapse:collapse; font-size:14px; }
+  .compare-table th, .compare-table td{ padding:12px; border-bottom:1px solid rgba(42,38,34,0.08); text-align:center; }
+  .compare-table th:first-child, .compare-table td:first-child{ text-align:left; width:46%; }
+  .compare-table th{
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--color-ash);
+    font-weight:500;
+  }
+  .compare-table td{ color:var(--color-ash); }
+  .compare-table td:first-child{ color:var(--color-pure); }
+  .compare-table tbody tr:last-child td{ border-bottom:none; }
+  .compare-check{ color:var(--color-sage-deep); font-size:16px; }
+  .compare-subhead td{
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--color-sage);
+    padding-top:24px;
+  }
+
+
+  /* ====================================================================
+     SCROLL ANIMATIONS (additive, progressive-enhancement).
+     The hide state is keyed to .reveal-ready, which is set synchronously in
+     the head only when motion is allowed — so no-JS and reduced-motion get the
+     site exactly as before, with nothing hidden and nothing to animate.
+     Only transform + opacity animate (GPU-cheap). Reversible: delete this
+     block, the head guard script, and the scroll-fx script at the bottom.
+     ==================================================================== */
+  :root{ --rv-ease:cubic-bezier(.22,1,.36,1); --rv-ease-soft:cubic-bezier(.25,.46,.45,.94); }
+  /* Reveal targets: a reduced, deliberate set (not every element on the page),
+     and each TYPE gets its own entrance so the motion is varied rather than one
+     uniform fade. Base = hidden + transition; the per-type entrances follow. */
+  .reveal-ready :is(
+    section h2,
+    #hero .space-y-4 > div,
+    .card-tile,
+    .guarantees-ledger,
+    #banner .card-30,
+    #banner .text-left
+  ){
+    opacity:0;
+    transition:opacity 1.1s var(--rv-ease-soft), transform 1.1s var(--rv-ease-soft), clip-path 1.1s var(--rv-ease-soft);
+    transition-delay:var(--rv-d, 0ms);
+    will-change:opacity, transform;
+  }
+  /* Per-type entrances (the variety), kept gentle */
+  .reveal-ready section h2             { transform:translateY(10px); }              /* headings: fade up */
+  .reveal-ready #hero .space-y-4 > div { transform:translateX(-12px); }             /* hero rows: slide from left */
+  .reveal-ready .card-tile             { transform:translateY(7px) scale(.985); }   /* cards: rise + scale */
+  .reveal-ready #banner .text-left     { transform:translateX(12px); }              /* banner text: slide from right */
+  .reveal-ready #banner .card-30       { transform:scale(1.04); }                   /* banner photo: gentle zoom settle */
+  .reveal-ready .guarantees-ledger     { clip-path:inset(0 0 100% 0); }             /* ledger: wipe down, one block */
+
+  /* Revealed: settle each back to rest */
+  .reveal-ready :is(section h2, #hero .space-y-4 > div, .card-tile, #banner .text-left, #banner .card-30).rv-in{ opacity:1; transform:none; }
+  .reveal-ready #guarantees .guarantees-ledger.rv-in{ opacity:1; transform:none; clip-path:inset(0 0 0 0); }
+
+  /* ---- Hover micro-interactions (pointer devices only) ----
+     Cards and chips reveal via transform too, so their transition is re-declared
+     (snappier) and the :hover selector is made specific enough to beat the
+     .rv-in transform:none. All movement is transform/opacity; nothing shifts layout. */
+  /* Hover is enabled by html.can-hover, which the scroll-fx script adds the
+     instant a real mouse moves (mousemove never fires from touch). This beats a
+     capability media query: a touchscreen laptop reports its primary pointer as
+     touch, so (hover:hover)/(pointer:fine) — and often any-hover too — hide the
+     mouse's hover effects entirely. Reacting to an actual mouse is reliable on
+     hybrids, plain desktops, and stays correctly off for touch-only.
+     Scoped to the buttons only (cards and chips reveal on scroll but do not
+     react to hover). */
+  .can-hover .btn-primary, .can-hover .btn-ghost, .can-hover .btn-card-cta{ transition:background-color .25s ease, transform .3s var(--rv-ease), box-shadow .3s ease; }
+  .can-hover .btn-primary:hover, .can-hover .btn-card-cta:hover{ transform:translateY(-3px) scale(1.05); box-shadow:0 18px 32px -12px rgba(47,69,39,0.5); }
+  .can-hover .btn-ghost:hover{ transform:translateY(-3px) scale(1.05); }
+  .can-hover .btn-primary svg, .can-hover .btn-card-cta svg{ transition:transform .32s var(--rv-ease); }
+  .can-hover .btn-primary:hover svg, .can-hover .btn-card-cta:hover svg{ transform:translateX(5px); }
+
+  /* Thin scroll-progress bar, sage, above the fixed nav. */
+  #scroll-progress{
+    position:fixed; top:0; left:0; height:2px; width:100%;
+    transform:scaleX(0); transform-origin:0 50%;
+    background:var(--color-sage); z-index:60;
+    transition:transform .08s linear; pointer-events:none;
+  }
+  /* The nav earns a little depth once you scroll past the hero. */
+  header.scrolled .nav-glass{ box-shadow:0 10px 34px -16px rgba(47,69,39,0.28); }
+  .nav-glass{ transition:box-shadow .3s ease; }
+
+  @media (prefers-reduced-motion: reduce){ #scroll-progress{ display:none; } }
+</style>
+<script>/* set the hide state before first paint; skip it entirely for reduced motion */
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('reveal-ready');}</script>
+</head>
+<body class="antialiased">
+
+<!-- ================= NAV ================= -->
+<header class="fixed top-0 left-0 right-0 z-50">
+  <div class="nav-glass">
+    <div class="max-w-[1200px] mx-auto flex items-center justify-between px-6 md:px-8 py-4">
+      <a href="#" class="flex items-center gap-2">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 2C17 6 19 11 19 15.5C19 19 16.8 21.5 14 23C11.2 21.5 9 19 9 15.5C9 11 11 6 14 2Z" stroke="var(--color-pure)" stroke-width="1.4" fill="none"/>
+          <circle cx="14" cy="13.5" r="2" stroke="var(--color-pure)" stroke-width="1.4"/>
+          <path d="M10 19.5L6.5 24" stroke="var(--color-pure)" stroke-width="1.4" stroke-linecap="round"/>
+          <path d="M18 19.5L21.5 24" stroke="var(--color-pure)" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <span class="font-mono text-[12px] tracking-[0.15em] uppercase text-[var(--color-pure)]/90 hidden sm:inline">Bosko PM</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-8 font-sans text-[16px] font-medium text-[var(--color-ash)]">
+        <a href="#services" class="hover:text-[var(--color-pure)] transition-colors">Services</a>
+        <a href="#pricing" class="hover:text-[var(--color-pure)] transition-colors">Pricing</a>
+        <a href="#areas" class="hover:text-[var(--color-pure)] transition-colors">Coverage</a>
+        <a href="#contact" class="hover:text-[var(--color-pure)] transition-colors">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button id="search-toggle" type="button" class="nav-icon-btn" aria-label="Search">
+          <svg width="17" height="17" viewBox="0 0 18 18" fill="none"><circle cx="8" cy="8" r="5.5" stroke="var(--color-pure)" stroke-width="1.4"/><path d="M12.5 12.5L16.5 16.5" stroke="var(--color-pure)" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </button>
+        <a href="#" class="nav-icon-btn md:hidden" aria-label="Menu">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2 5H16M2 9H16M2 13H16" stroke="var(--color-pure)" stroke-width="1.4" stroke-linecap="round"/></svg>
+        </a>
+        <a href="#contact" class="btn-primary">
+          <span class="font-mono text-[12px] tracking-[0.08em] uppercase">Contact</span>
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7H12M12 7L7.5 2.5M12 7L7.5 11.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div id="search-panel" class="hidden" style="border-top:1px solid rgba(42,38,34,0.08);">
+      <div class="max-w-[640px] mx-auto px-6 md:px-8 py-5">
+        <div class="flex items-center gap-3 rounded-full px-5 py-3" style="background:#fff; border:1px solid rgba(42,38,34,0.12);">
+          <svg width="16" height="16" viewBox="0 0 18 18" fill="none" class="shrink-0"><circle cx="8" cy="8" r="5.5" stroke="var(--color-ash)" stroke-width="1.4"/><path d="M12.5 12.5L16.5 16.5" stroke="var(--color-ash)" stroke-width="1.4" stroke-linecap="round"/></svg>
+          <input id="search-input" type="text" placeholder="Search services, pricing, coverage&hellip;" autocomplete="off" class="flex-1 bg-transparent outline-none text-[15px]" style="color:var(--color-pure);">
+        </div>
+        <div id="search-results" class="mt-2"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section id="hero" class="relative overflow-hidden min-h-[680px] flex items-center">
+  <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1800&q=80&auto=format&fit=crop" alt="A modern low-rise apartment community" class="absolute inset-0 w-full h-full object-cover" style="object-position:50% 50%; transform:scale(1.1);">
+  <div class="absolute inset-0 hero-scrim"></div>
+
+  <div class="relative z-10 max-w-[1200px] mx-auto px-6 md:px-8 pt-32 pb-14 w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+    <div class="flex-1 text-center lg:text-left">
+      <span class="pill-badge mb-8">Salt Lake &amp; Utah County</span>
+
+      <h1 class="fs-hero font-display italic-first" style="margin:20px 0 0;">
+        <em style="font-style:italic;">Care</em> for your community.
+      </h1>
+
+      <p class="mt-6 text-[18px] font-medium text-[var(--color-pure)] max-w-[460px] mx-auto lg:mx-0">Bosko is a full-service manager for apartment communities.</p>
+      <p class="mt-3 text-[17px] text-[var(--color-cloud)]/80 max-w-[460px] mx-auto lg:mx-0 leading-[1.55]">
+        Leasing, on-site staffing, maintenance, income collection, and owner accounting &mdash; one accountable team for your building, backed by software that never drops a detail.
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4">
+        <a href="#contact" class="btn-primary">
+          <span>Request a Proposal</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8H14M14 8L9 3M14 8L9 13" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#services" class="btn-ghost">
+          <span>How We Work</span>
+        </a>
+      </div>
+
+      <div class="mt-10 flex flex-col items-center lg:items-start gap-3">
+        <div class="laurel-badge">
+          <svg width="20" height="34" viewBox="0 0 20 34" fill="none"><path d="M18 2C10 6 8 16 10 32" stroke="var(--color-sage-deep)" stroke-width="1.2"/><ellipse cx="12" cy="8" rx="4" ry="1.6" fill="var(--color-sage-deep)" opacity="0.9" transform="rotate(30 12 8)"/><ellipse cx="9.5" cy="14" rx="4" ry="1.6" fill="var(--color-sage-deep)" opacity="0.9" transform="rotate(20 9.5 14)"/><ellipse cx="8.5" cy="20" rx="4" ry="1.6" fill="var(--color-sage-deep)" opacity="0.9" transform="rotate(12 8.5 20)"/><ellipse cx="9" cy="26" rx="4" ry="1.6" fill="var(--color-sage-deep)" opacity="0.9" transform="rotate(6 9 26)"/></svg>
+          <div class="laurel-text"><div class="name">Licensed</div><div class="sub">Utah Real Estate Agent</div></div>
+          <svg width="20" height="34" viewBox="0 0 20 34" fill="none" style="transform:scaleX(-1)"><path d="M18 2C10 6 8 16 10 32" stroke="var(--color-sage-deep)" stroke-width="1.2"/><ellipse cx="12" cy="8" rx="4" ry="1.6" fill="var(--color-sage-deep)" opacity="0.9" transform="rotate(30 12 8)"/><ellipse cx="9.5" cy="14" rx="4" ry="1.6" fill="var(--color-sage-deep)" opacity="0.9" transform="rotate(20 9.5 14)"/><ellipse cx="8.5" cy="20" rx="4" ry="1.6" fill="var(--color-sage-deep)" opacity="0.9" transform="rotate(12 8.5 20)"/><ellipse cx="9" cy="26" rx="4" ry="1.6" fill="var(--color-sage-deep)" opacity="0.9" transform="rotate(6 9 26)"/></svg>
+        </div>
+        <p class="font-mono text-[11px] tracking-[0.12em] uppercase text-[var(--color-ash)]">Launching Summer 2027 &middot; Salt Lake &amp; Utah County</p>
+      </div>
+    </div>
+
+    <div class="flex-1 w-full max-w-[380px] mx-auto lg:mx-0 lg:ml-auto">
+      <div style="background:rgba(255,255,255,0.92); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-radius:22px; padding:28px; box-shadow:0 30px 60px -20px rgba(20,26,16,0.4);">
+        <div class="mono-label" style="color:var(--color-ash);">Working with Bosko</div>
+        <div class="mt-5 space-y-4">
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 shrink-0 rounded-full flex items-center justify-center" style="background:var(--color-sage-pale);"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M5.5 8L7 9.5L10.5 6" stroke="var(--color-sage-deep)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="8" r="6" stroke="var(--color-sage-deep)" stroke-width="1.3"/></svg></div>
+            <div><div class="text-[14px] font-medium" style="color:var(--color-pure);">Fee-only management</div><p class="text-[12px] mt-0.5" style="color:var(--color-ash);">A single fee on collected income. No markups, no junk fees.</p></div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 shrink-0 rounded-full flex items-center justify-center" style="background:var(--color-sage-pale);"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5.5" r="2.5" stroke="var(--color-sage-deep)" stroke-width="1.3"/><path d="M3.5 13C3.5 10.5 5.5 9 8 9C10.5 9 12.5 10.5 12.5 13" stroke="var(--color-sage-deep)" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+            <div><div class="text-[14px] font-medium" style="color:var(--color-pure);">On-site team, employed by us</div><p class="text-[12px] mt-0.5" style="color:var(--color-ash);">Your manager &amp; maintenance tech, reimbursed transparently.</p></div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 shrink-0 rounded-full flex items-center justify-center" style="background:var(--color-sage-pale);"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="3" y="2.5" width="10" height="11" rx="1.5" stroke="var(--color-sage-deep)" stroke-width="1.3"/><path d="M5.5 6H10.5M5.5 9H10.5M5.5 11.5H8.5" stroke="var(--color-sage-deep)" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+            <div><div class="text-[14px] font-medium" style="color:var(--color-pure);">Owner accounting, monthly</div><p class="text-[12px] mt-0.5" style="color:var(--color-ash);">Clear statements and portal access, same day every month.</p></div>
+          </div>
+        </div>
+        <a href="#contact" class="btn-card-cta mt-6">
+          <span>Request a proposal</span>
+          <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><path d="M2 7H12M12 7L7.5 2.5M12 7L7.5 11.5" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRICING ================= -->
+<section id="pricing" class="section-gap px-6 md:px-8" style="margin-top:140px; scroll-margin-top:100px;">
+  <div class="max-w-[1200px] mx-auto text-center">
+    <h2 class="font-display fs-h2">
+      Pricing that fits your building
+    </h2>
+    <p class="mt-6 text-[18px] font-medium text-[var(--color-pure)]">One agreement per community. No consumer tiers.</p>
+    <p class="mt-2 text-[18px] font-light text-[var(--color-ash)] max-w-[640px] mx-auto leading-[1.5]">
+      We charge a single management fee as a percentage of the income your property collects &mdash; it scales with the size of your community. Your exact rate is set in a proposal built around your building, in plain language, before you sign.
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-4 mt-16 text-left">
+
+      <div class="card-tile tile-sage">
+        <span class="mono-label">Fee-only</span>
+        <h3 class="font-display fs-h3 mt-4"><em style="font-style:italic;">One</em> way we get paid</h3>
+        <p class="mt-3 text-[15px] text-white/80 leading-[1.5]">A single fee on what your property collects &mdash; no markups on maintenance or vendor work, and no junk fees hiding in the statement.</p>
+      </div>
+
+      <div class="card-tile tile-sage">
+        <span class="mono-label">Scales with size</span>
+        <h3 class="font-display fs-h3 mt-4"><em style="font-style:italic;">Priced</em> to your community</h3>
+        <p class="mt-3 text-[15px] text-white/80 leading-[1.5]">The rate reflects your building's size &mdash; larger communities pay a lower percentage. On-site staffing is employed by us and reimbursed by the property, not marked up.</p>
+      </div>
+
+      <div class="card-tile tile-terracotta">
+        <span class="mono-label">In writing</span>
+        <h3 class="font-display fs-h3 mt-4"><em style="font-style:italic;">Everything</em> in the agreement</h3>
+        <p class="mt-3 text-[15px] text-white/80 leading-[1.5]">Every fee &mdash; management, leasing, and capital-project work &mdash; is spelled out in the management agreement in plain language before you sign.</p>
+      </div>
+
+    </div>
+
+    <div class="mt-12 flex flex-col items-center gap-3">
+      <a href="#contact" class="btn-primary">
+        <span>Request a Proposal</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8H14M14 8L9 3M14 8L9 13" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GUARANTEES ================= -->
+<section id="guarantees" class="section-gap px-6 md:px-8" style="margin-top:96px; scroll-margin-top:100px;">
+  <div class="max-w-[1200px] mx-auto text-center">
+    <h2 class="font-display fs-h2-sm">What every owner can count on</h2>
+
+    <div class="guarantees-ledger mt-14 text-left rounded-[24px]" style="overflow:clip; border:1px solid rgba(42,38,34,0.1); background:var(--color-graphite);">
+      <div class="grid sm:grid-cols-2">
+        <div class="guarantee-col guarantee-col-first">
+
+          <div class="guarantee-row">
+            <div class="w-10 h-10 shrink-0 rounded-full flex items-center justify-center" style="background:var(--color-sage-pale);">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 3H8L14 9L9 14L3 8V3Z" stroke="var(--color-sage-deep)" stroke-width="1.3" stroke-linejoin="round"/><circle cx="6" cy="6" r="1" fill="var(--color-sage-deep)"/></svg>
+            </div>
+            <div>
+              <h3 class="fs-h3-sm font-medium">No Hidden Fees</h3>
+              <p class="mt-1.5 text-[14px] text-[var(--color-ash)] leading-[1.5]">Every fee is written into your agreement in plain language. What you sign is what you pay.</p>
+            </div>
+          </div>
+
+          <div class="guarantee-row">
+            <div class="w-10 h-10 shrink-0 rounded-full flex items-center justify-center" style="background:var(--color-sage-pale);">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2L13 4V8C13 11 10.5 13 8 14C5.5 13 3 11 3 8V4L8 2Z" stroke="var(--color-sage-deep)" stroke-width="1.3" stroke-linejoin="round"/><path d="M5.5 8L7 9.5L10.5 6" stroke="var(--color-sage-deep)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <h3 class="fs-h3-sm font-medium">On-Site Team, Employed by Us</h3>
+              <p class="mt-1.5 text-[14px] text-[var(--color-ash)] leading-[1.5]">Your on-site manager and maintenance tech are our W-2 employees, held to our standards and reimbursed transparently from the property.</p>
+            </div>
+          </div>
+
+          <div class="guarantee-row">
+            <div class="w-10 h-10 shrink-0 rounded-full flex items-center justify-center" style="background:var(--color-sage-pale);">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="3" y="2" width="10" height="12" rx="1.5" stroke="var(--color-sage-deep)" stroke-width="1.3"/><path d="M5.5 6H10.5M5.5 9H10.5M5.5 12H8.5" stroke="var(--color-sage-deep)" stroke-width="1.2" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <h3 class="fs-h3-sm font-medium">Documented Screening</h3>
+              <p class="mt-1.5 text-[14px] text-[var(--color-ash)] leading-[1.5]">The same income, credit, and rental-history criteria applied to every applicant &mdash; no exceptions.</p>
+            </div>
+          </div>
+
+          <div class="guarantee-row">
+            <div class="w-10 h-10 shrink-0 rounded-full flex items-center justify-center" style="background:var(--color-sage-pale);">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="var(--color-sage-deep)" stroke-width="1.3"/><path d="M8 4.5V8L10.5 9.5" stroke="var(--color-sage-deep)" stroke-width="1.3" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <h3 class="fs-h3-sm font-medium">Fast Maintenance Response</h3>
+              <p class="mt-1.5 text-[14px] text-[var(--color-ash)] leading-[1.5]">Emergencies contacted within 1 hour. Every request triaged the moment it comes in.</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="guarantee-col">
+
+          <div class="guarantee-row">
+            <div class="w-10 h-10 shrink-0 rounded-full flex items-center justify-center" style="background:var(--color-sage-pale);">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 13V3" stroke="var(--color-sage-deep)" stroke-width="1.3" stroke-linecap="round"/><path d="M3 13H13" stroke="var(--color-sage-deep)" stroke-width="1.3" stroke-linecap="round"/><rect x="5" y="8" width="2" height="5" fill="var(--color-sage-deep)"/><rect x="8" y="5" width="2" height="8" fill="var(--color-sage-deep)"/><rect x="11" y="9" width="2" height="4" fill="var(--color-sage-deep)"/></svg>
+            </div>
+            <div>
+              <h3 class="fs-h3-sm font-medium">Monthly Owner Statements</h3>
+              <p class="mt-1.5 text-[14px] text-[var(--color-ash)] leading-[1.5]">A statement lands the same day every month, with photos on any repair over $150.</p>
+            </div>
+          </div>
+
+          <div class="guarantee-row">
+            <div class="w-10 h-10 shrink-0 rounded-full flex items-center justify-center" style="background:var(--color-sage-pale);">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2.5" y="3" width="11" height="10" rx="1.5" stroke="var(--color-sage-deep)" stroke-width="1.3"/><path d="M2.5 6H13.5" stroke="var(--color-sage-deep)" stroke-width="1.3"/><path d="M5.5 9.5L7 11L10.5 7.5" stroke="var(--color-sage-deep)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <h3 class="fs-h3-sm font-medium">On-Time Rent Collection</h3>
+              <p class="mt-1.5 text-[14px] text-[var(--color-ash)] leading-[1.5]">Online payment by default, automated reminders, and a real person following up if rent goes unpaid.</p>
+            </div>
+          </div>
+
+          <div class="guarantee-row">
+            <div class="w-10 h-10 shrink-0 rounded-full flex items-center justify-center" style="background:var(--color-sage-pale);">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2C5 4 4 8 5 13" stroke="var(--color-sage-deep)" stroke-width="1.2"/><ellipse cx="6" cy="6" rx="2.2" ry="0.9" fill="var(--color-sage-deep)" opacity="0.85" transform="rotate(20 6 6)"/><ellipse cx="5" cy="9" rx="2.2" ry="0.9" fill="var(--color-sage-deep)" opacity="0.85" transform="rotate(10 5 9)"/></svg>
+            </div>
+            <div>
+              <h3 class="fs-h3-sm font-medium">Licensed &amp; Compliant</h3>
+              <p class="mt-1.5 text-[14px] text-[var(--color-ash)] leading-[1.5]">Managed by a licensed Utah real estate agent, with a process built to reduce Fair Housing risk.</p>
+            </div>
+          </div>
+
+          <div class="guarantee-row">
+            <div class="w-10 h-10 shrink-0 rounded-full flex items-center justify-center" style="background:var(--color-sage-pale);">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 3H12C12.6 3 13 3.4 13 4V10C13 10.6 12.6 11 12 11H8L5 13.5V11H4C3.4 11 3 10.6 3 10V4C3 3.4 3.4 3 4 3Z" stroke="var(--color-sage-deep)" stroke-width="1.3" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <h3 class="fs-h3-sm font-medium">A Team That Answers</h3>
+              <p class="mt-1.5 text-[14px] text-[var(--color-ash)] leading-[1.5]">We&rsquo;re a small, dedicated team &mdash; reach out and you&rsquo;ll get a personal reply, not a ticket number.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOR OWNERS ================= -->
+<section id="services" class="section-gap px-6 md:px-8" style="margin-top:140px; scroll-margin-top:100px;">
+  <div class="max-w-[1200px] mx-auto text-center">
+    <h2 class="font-display fs-h2">
+      Full-service management
+    </h2>
+    <p class="mt-6 text-[18px] font-medium text-[var(--color-pure)]">One team, every part of running your building.</p>
+    <p class="mt-2 text-[18px] font-light text-[var(--color-ash)] max-w-[640px] mx-auto leading-[1.5]">
+      From leasing every unit to closing the books each month &mdash; plus on-site staffing and capital-project management &mdash; handled by people who answer the phone, backed by software that never drops a detail.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-4 mt-16 text-left">
+
+      <!-- Leasing & screening -->
+      <div class="card-tile tile-sage">
+        <h3 class="font-display fs-h3 text-center"><em style="font-style:italic;">Fill</em> units with the right residents</h3>
+        <p class="mt-4 text-[16px] text-white/80 text-center leading-[1.5]">Your on-site team leases every unit, and every applicant is screened against the same documented criteria &mdash; no exceptions, no guesswork, no Fair Housing risk.</p>
+        <div class="mock-panel mt-8 p-5">
+          <span class="mono-label">Screening Criteria</span>
+          <div class="mt-4 space-y-3 text-[14px]">
+            <div class="flex justify-between"><span class="text-white/60">Income</span><span>3&times; monthly rent, minimum</span></div>
+            <div class="flex justify-between"><span class="text-white/60">Credit score</span><span>620+ (case-by-case to 600)</span></div>
+            <div class="flex justify-between"><span class="text-white/60">Rental history</span><span>No prior evictions</span></div>
+            <div class="flex justify-between"><span class="text-white/60">Applied to</span><span>Every applicant, equally</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Maintenance tiers -->
+      <div class="card-tile tile-terracotta">
+        <h3 class="font-display fs-h3 text-center"><em style="font-style:italic;">Respond</em> before small problems get big</h3>
+        <p class="mt-4 text-[16px] text-white/80 text-center leading-[1.5]">Every request is triaged the moment it comes in, so emergencies get handled now and routine repairs never slip through.</p>
+        <div class="mock-panel mt-8 p-5">
+          <span class="mono-label">Response Times</span>
+          <div class="mt-4 space-y-3 text-[14px]">
+            <div class="flex justify-between"><span class="text-white/60">Emergency</span><span style="color:#ff9e8a;">Within 1 hour</span></div>
+            <div class="flex justify-between"><span class="text-white/60">Urgent</span><span style="color:#ffd88a;">Acknowledged in 24 hrs</span></div>
+            <div class="flex justify-between"><span class="text-white/60">Routine</span><span style="color:#a3e0af;">Complete in 3&ndash;7 days</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Income collection -->
+      <div class="card-tile tile-sage">
+        <h3 class="font-display text-center fs-h3"><em style="font-style:italic;">Collect</em> every dollar the property earns</h3>
+        <p class="mt-4 text-[16px] text-white/80 text-center leading-[1.5]">Rent and other income &mdash; online payment by default, automated reminders before anything's late, and a real person following up after one week unpaid.</p>
+        <div class="mock-panel mt-8 p-5">
+          <span class="mono-label">Collection Timeline</span>
+          <div class="mt-4 space-y-3 text-[14px]">
+            <div class="flex justify-between"><span class="text-white/60">3 days before due</span><span>Automatic reminder</span></div>
+            <div class="flex justify-between"><span class="text-white/60">1st of month</span><span>Rent due, paid online</span></div>
+            <div class="flex justify-between"><span class="text-white/60">Day it's late</span><span>Automated notice</span></div>
+            <div class="flex justify-between"><span class="text-white/60">7+ days unpaid</span><span>Personal outreach</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Owner reporting -->
+      <div class="card-tile tile-terracotta">
+        <h3 class="font-display fs-h3 text-center"><em style="font-style:italic;">See</em> exactly where things stand</h3>
+        <p class="mt-4 text-[16px] text-white/80 text-center leading-[1.5]">A statement lands the same day every month, with photos attached to any repair over $150 &mdash; and portal access whenever you want a look.</p>
+        <div class="mock-panel mt-8 p-5">
+          <span class="mono-label">Owner Statement</span>
+          <div class="mt-4 space-y-3 text-[14px]">
+            <div class="flex justify-between"><span class="text-white/60">Rent collected</span><span>Itemized, monthly</span></div>
+            <div class="flex justify-between"><span class="text-white/60">Maintenance &amp; vendor costs</span><span>Photos over $150</span></div>
+            <div class="flex justify-between"><span class="text-white/60">Net payout</span><span>Deposited automatically</span></div>
+            <div class="flex justify-between"><span class="text-white/60">Delivered</span><span>Same day, every month</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= PHOTO BANNER: OWNERS ================= -->
+<section id="banner" class="section-gap px-6 md:px-8" style="margin-top:96px;">
+  <div class="max-w-[1200px] mx-auto grid md:grid-cols-2 gap-4 items-center">
+    <div class="relative overflow-hidden card-30" style="height:380px;">
+      <img src="https://images.unsplash.com/photo-1460317442991-0ec209397118?w=1200&q=80&auto=format&fit=crop" alt="An apartment community managed by Bosko" class="absolute inset-0 w-full h-full object-cover">
+    </div>
+    <div class="text-left px-2">
+      <span class="font-mono text-[12px] tracking-[0.1em] uppercase text-[var(--color-sage)]">Every community, the same standard</span>
+      <h3 class="font-display fs-h2-sm mt-3">Run like it's ours.</h3>
+      <p class="mt-4 text-[16px] text-[var(--color-ash)] leading-[1.6] max-w-[440px]">From a single building to a growing portfolio, every community gets documented screening, real inspections, an on-site team we stand behind, and monthly accounting you can trust.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICE AREA ================= -->
+<section id="areas" class="section-gap px-6 md:px-8" style="margin-top:96px; scroll-margin-top:100px;">
+  <div class="max-w-[1200px] mx-auto text-center">
+    <span class="font-mono text-[12px] tracking-[0.1em] uppercase text-[var(--color-sage)]">Where We&rsquo;ll Be</span>
+    <h2 class="font-display fs-h2-sm mt-3">Launching across Salt Lake &amp; Utah County</h2>
+    <p class="mt-4 text-[16px] font-light text-[var(--color-ash)] max-w-[560px] mx-auto leading-[1.6]">
+      Starting Summer 2027, we&rsquo;re taking on apartment communities in cities across both counties &mdash; including:
+    </p>
+
+    <div class="mt-12 text-left max-w-[900px] mx-auto">
+      <span class="font-mono text-[11px] tracking-[0.1em] uppercase text-[var(--color-ash)]">Salt Lake County</span>
+      <div class="flex flex-wrap gap-2.5 mt-4">
+        <span class="area-chip">Salt Lake City</span>
+        <span class="area-chip">Sandy</span>
+        <span class="area-chip">Murray</span>
+        <span class="area-chip">Midvale</span>
+        <span class="area-chip">South Jordan</span>
+        <span class="area-chip">West Jordan</span>
+        <span class="area-chip">Draper</span>
+        <span class="area-chip">Cottonwood Heights</span>
+        <span class="area-chip">Holladay</span>
+        <span class="area-chip">Millcreek</span>
+        <span class="area-chip">Taylorsville</span>
+        <span class="area-chip">Riverton</span>
+        <span class="area-chip">Herriman</span>
+        <span class="area-chip">West Valley City</span>
+      </div>
+    </div>
+
+    <div class="mt-10 text-left max-w-[900px] mx-auto">
+      <span class="font-mono text-[11px] tracking-[0.1em] uppercase text-[var(--color-ash)]">Utah County</span>
+      <div class="flex flex-wrap gap-2.5 mt-4">
+        <span class="area-chip">Provo</span>
+        <span class="area-chip">Orem</span>
+        <span class="area-chip">Lehi</span>
+        <span class="area-chip">American Fork</span>
+        <span class="area-chip">Pleasant Grove</span>
+        <span class="area-chip">Spanish Fork</span>
+        <span class="area-chip">Springville</span>
+        <span class="area-chip">Saratoga Springs</span>
+        <span class="area-chip">Eagle Mountain</span>
+        <span class="area-chip">Highland</span>
+        <span class="area-chip">Lindon</span>
+        <span class="area-chip">Payson</span>
+      </div>
+    </div>
+
+    <p class="mt-10 text-[13px] text-[var(--color-ash)]">Don&rsquo;t see your city? <a href="#contact" style="color:var(--color-sage); text-decoration:underline;">Reach out</a> &mdash; we&rsquo;re still finalizing our exact launch footprint.</p>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="relative overflow-hidden hero-sky" style="margin-top:140px; padding-top:120px; padding-bottom:120px; scroll-margin-top:60px;">
+  <div class="relative z-10 max-w-[720px] mx-auto px-6 md:px-8 text-center">
+    <h2 class="font-display fs-h2">
+      Let&rsquo;s talk
+    </h2>
+    <p class="mt-6 text-[18px] font-light text-[var(--color-pure)]/85 max-w-[560px] mx-auto leading-[1.5]">
+      Own an apartment community in Salt Lake or Utah County? Tell us about your building and we'll put together a proposal.
+    </p>
+    <form id="contact-form" class="mt-10 text-left mx-auto" style="max-width:480px;" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="fc6b9927-6c34-4f61-a635-2812a5750078">
+      <input type="hidden" name="subject" value="New owner inquiry — Bosko PM website">
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+
+      <div class="grid gap-4">
+        <div class="form-field">
+          <label for="cf-name">Name</label>
+          <input id="cf-name" name="name" type="text" required placeholder="Your name">
+        </div>
+        <div class="form-field">
+          <label for="cf-email">Email</label>
+          <input id="cf-email" name="email" type="email" required placeholder="you@example.com">
+        </div>
+        <div class="form-field">
+          <label for="cf-phone">Phone <span style="text-transform:none; letter-spacing:normal;">(optional)</span></label>
+          <input id="cf-phone" name="phone" type="tel" placeholder="(555) 555-5555">
+        </div>
+        <div class="form-field">
+          <label for="cf-address">Property Address &amp; Unit Count</label>
+          <input id="cf-address" name="property_address" type="text" placeholder="Street, city — and how many units">
+        </div>
+        <div class="form-field">
+          <label for="cf-message">Message</label>
+          <textarea id="cf-message" name="message" rows="4" required placeholder="Tell us about your community — location, unit count, and what you're looking for."></textarea>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-primary mt-6" style="width:100%; justify-content:center;">
+        <span>Send Message</span>
+      </button>
+      <p id="cf-status" class="mt-3 text-[13px]" style="color:var(--color-ash); min-height:1.2em;"></p>
+    </form>
+    <p class="mt-6 text-[14px] text-[var(--color-ash)]">We're a small team getting ready for our Summer 2027 launch &mdash; reach out and we'll get back to you personally.</p>
+  </div>
+</section>
+
+<footer class="px-6 md:px-8 py-10" style="border-top:1px solid rgba(42,38,34,0.08);">
+  <div class="max-w-[1200px] mx-auto flex flex-wrap items-center justify-between gap-6">
+    <div class="flex items-center gap-2">
+      <svg width="22" height="22" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14 2C17 6 19 11 19 15.5C19 19 16.8 21.5 14 23C11.2 21.5 9 19 9 15.5C9 11 11 6 14 2Z" stroke="var(--color-pure)" stroke-width="1.4" fill="none"/>
+        <circle cx="14" cy="13.5" r="2" stroke="var(--color-pure)" stroke-width="1.4"/>
+        <path d="M10 19.5L6.5 24" stroke="var(--color-pure)" stroke-width="1.4" stroke-linecap="round"/>
+        <path d="M18 19.5L21.5 24" stroke="var(--color-pure)" stroke-width="1.4" stroke-linecap="round"/>
+      </svg>
+      <span class="font-mono text-[12px] tracking-[0.15em] uppercase text-[var(--color-pure)]/80">Bosko PM</span>
+    </div>
+    <nav class="flex flex-wrap items-center gap-6 font-mono text-[11px] tracking-[0.08em] uppercase text-[var(--color-ash)]">
+      <a href="#services" class="hover:text-[var(--color-pure)] transition-colors">Services</a>
+      <a href="#pricing" class="hover:text-[var(--color-pure)] transition-colors">Pricing</a>
+      <a href="#areas" class="hover:text-[var(--color-pure)] transition-colors">Coverage</a>
+      <a href="#contact" class="hover:text-[var(--color-pure)] transition-colors">Contact</a>
+    </nav>
+    <p class="text-[12px] text-[var(--color-ash)] font-mono">Licensed Utah Real Estate Agent &middot; Salt Lake &amp; Utah County &middot; Launching Summer 2027</p>
+  </div>
+</footer>
+
+<script>
+  // ---- Search ----
+  const searchIndex = [
+    { title: "Services", snippet: "Full-service apartment management: leasing, on-site staffing, maintenance, income collection, owner accounting.", anchor: "#services" },
+    { title: "Leasing & Resident Screening", snippet: "On-site teams lease every unit; every applicant screened the same way — income, credit, rental history, no exceptions.", anchor: "#services" },
+    { title: "Maintenance Response Times", snippet: "Emergency within 1 hour, urgent acknowledged in 24 hrs, routine complete in 3–7 days.", anchor: "#services" },
+    { title: "Income Collection", snippet: "Rent and other income — online payment by default, automated reminders, personal follow-up after 7 days unpaid.", anchor: "#services" },
+    { title: "Owner Accounting & Reporting", snippet: "Monthly owner statement delivered the same day, photos attached over $150, portal access anytime.", anchor: "#services" },
+    { title: "Pricing", snippet: "One agreement per community. A single management fee as a percentage of collected income, scaled to your building. Request a proposal.", anchor: "#pricing" },
+    { title: "Fee-only management", snippet: "No markups on maintenance or vendor work, no junk fees. On-site staffing is reimbursed, not marked up.", anchor: "#pricing" },
+    { title: "What You Get", snippet: "Fee-only pricing, on-site team employed by us, documented screening, fast maintenance, monthly owner accounting, on-time income collection, licensed compliance, a team that answers.", anchor: "#guarantees" },
+    { title: "Coverage", snippet: "Apartment communities in cities across Salt Lake and Utah County.", anchor: "#areas" },
+    { title: "Contact", snippet: "Tell us about your community and we'll put together a proposal.", anchor: "#contact" }
+  ];
+
+  const searchToggle = document.getElementById('search-toggle');
+  const searchPanel = document.getElementById('search-panel');
+  const searchInput = document.getElementById('search-input');
+  const searchResults = document.getElementById('search-results');
+
+  function renderResults(query){
+    const q = query.trim().toLowerCase();
+    if(!q){ searchResults.innerHTML = ''; return; }
+    const matches = searchIndex.filter(item => (item.title + ' ' + item.snippet).toLowerCase().includes(q));
+    if(matches.length === 0){
+      searchResults.innerHTML = '<div class="px-4 py-3 text-[13px]" style="color:var(--color-ash)">No matches — try &ldquo;pricing&rdquo;, &ldquo;deposit&rdquo;, or &ldquo;maintenance&rdquo;.</div>';
+      return;
+    }
+    searchResults.innerHTML = matches.map(item =>
+      '<a href="' + item.anchor + '" class="block rounded-lg px-4 py-3 transition-colors" style="color:inherit;">' +
+        '<div class="text-[14px] font-medium" style="color:var(--color-pure)">' + item.title + '</div>' +
+        '<div class="text-[12px] mt-0.5" style="color:var(--color-ash)">' + item.snippet + '</div>' +
+      '</a>'
+    ).join('');
+    searchResults.querySelectorAll('a').forEach(a => {
+      a.addEventListener('mouseenter', () => { a.style.background = 'rgba(42,38,34,0.05)'; });
+      a.addEventListener('mouseleave', () => { a.style.background = 'transparent'; });
+    });
+  }
+
+  function openSearch(){
+    searchPanel.classList.remove('hidden');
+    searchInput.focus();
+  }
+  function closeSearch(){
+    searchPanel.classList.add('hidden');
+    searchInput.value = '';
+    searchResults.innerHTML = '';
+  }
+
+  searchToggle.addEventListener('click', () => {
+    if(searchPanel.classList.contains('hidden')){ openSearch(); } else { closeSearch(); }
+  });
+  searchInput.addEventListener('input', () => renderResults(searchInput.value));
+  searchResults.addEventListener('click', (e) => {
+    if(e.target.closest('a')){ closeSearch(); }
+  });
+  document.addEventListener('click', (e) => {
+    if(!searchPanel.contains(e.target) && !searchToggle.contains(e.target)){ closeSearch(); }
+  });
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape'){ closeSearch(); }
+  });
+
+  // ---- Contact form ----
+  const contactForm = document.getElementById('contact-form');
+  const cfStatus = document.getElementById('cf-status');
+
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    submitBtn.disabled = true;
+    cfStatus.textContent = 'Sending…';
+    cfStatus.style.color = 'var(--color-ash)';
+    try {
+      const res = await fetch(contactForm.action, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(contactForm)
+      });
+      const data = await res.json();
+      if (data.success) {
+        cfStatus.textContent = 'Thanks — we’ll get back to you personally.';
+        cfStatus.style.color = '#2f6b43';
+        contactForm.reset();
+      } else {
+        throw new Error(data.message || 'Submission failed');
+      }
+    } catch (err) {
+      cfStatus.textContent = 'Something went wrong — email us directly at schowy05@gmail.com instead.';
+      cfStatus.style.color = 'var(--color-terracotta)';
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
+</script>
+
+<script>
+  /* ---- Scroll animations (additive; independent of the app JS above) ---- */
+  (function(){
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return; // honor the OS setting
+
+    // Enable hover effects only once a real mouse is in use. mousemove never
+    // fires from touch, so this arms hover on desktops and touchscreen laptops
+    // alike, and correctly stays off for touch-only devices (no sticky :hover).
+    function armHover(){ document.documentElement.classList.add('can-hover'); }
+    addEventListener('mousemove', armHover, { once: true, passive: true });
+    addEventListener('pointerdown', function(e){ if (e.pointerType === 'mouse') armHover(); }, { passive: true });
+
+    var REVEAL = 'section h2, #hero .space-y-4 > div, .card-tile, .guarantees-ledger, #banner .card-30, #banner .text-left';
+
+    // Staggered cascades: each item in a group is delayed by its position among
+    // its matching siblings, so a grid or a list arrives like a drawer opening.
+    function stagger(sel, step){
+      document.querySelectorAll(sel).forEach(function(el){
+        var i = 0, n = el;
+        while ((n = n.previousElementSibling)) { if (n.matches && n.matches(sel)) i++; }
+        el.style.setProperty('--rv-d', (i * step) + 'ms');
+      });
+    }
+    stagger('#pricing .card-tile', 85);
+    stagger('#hero .space-y-4 > div', 110);
+
+    var allTargets = Array.prototype.slice.call(document.querySelectorAll(REVEAL));
+
+    // These two sections each reveal as ONE beat, triggered when you actually
+    // reach that section — so their animations fire separately instead of
+    // overlapping while both are on screen at once.
+    var GROUPED = ['#pricing', '#guarantees', '#services']
+      .map(function(s){ return document.querySelector(s); })
+      .filter(Boolean);
+    function inGrouped(el){ return GROUPED.some(function(s){ return s.contains(el); }); }
+    var soloTargets = allTargets.filter(function(t){ return !inGrouped(t); });
+
+    if ('IntersectionObserver' in window){
+      // Per-element: fade in once when reached, then stay revealed (unobserve).
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if (e.isIntersecting){ e.target.classList.add('rv-in'); io.unobserve(e.target); }
+        });
+      }, { rootMargin: '0px 0px -25% 0px', threshold: 0.12 });
+      soloTargets.forEach(function(t){ io.observe(t); });
+
+      // Grouped sections reveal as one beat when reached, then stay. Each holds
+      // off by its own amount — guarantees a little longer than pricing.
+      var GROUP_MARGIN = { pricing: '0px 0px -40% 0px', guarantees: '0px 0px -12% 0px', services: '0px 0px -25% 0px' };
+      GROUPED.forEach(function(s){
+        var kids = allTargets.filter(function(t){ return s.contains(t); });
+        var gio = new IntersectionObserver(function(entries){
+          if (!entries[0].isIntersecting) return;
+          kids.forEach(function(t){ t.classList.add('rv-in'); });
+          gio.unobserve(s);
+        }, { rootMargin: GROUP_MARGIN[s.id] || '0px 0px -40% 0px', threshold: 0 });
+        gio.observe(s);
+      });
+    } else {
+      allTargets.forEach(function(t){ t.classList.add('rv-in'); });
+    }
+
+    // Scroll-driven chrome: progress bar, hero parallax, nav shadow. One rAF.
+    var bar = document.createElement('div'); bar.id = 'scroll-progress'; document.body.appendChild(bar);
+    var header = document.querySelector('header');
+    var heroImg = document.querySelector('#hero img');
+    var ticking = false;
+    function onScroll(){
+      if (ticking) return; ticking = true;
+      requestAnimationFrame(function(){
+        var y = window.scrollY || 0;
+        var max = Math.max(document.documentElement.scrollHeight - innerHeight, 1);
+        bar.style.transform = 'scaleX(' + Math.min(y / max, 1).toFixed(4) + ')';
+        // Move the hero photo slower than the page. Capped inside the image's
+        // 10% overscale so no edge is ever exposed.
+        if (heroImg){
+          var ty = Math.min(y * 0.05, 30);
+          heroImg.style.transform = 'scale(1.1) translate3d(0,' + (-ty).toFixed(1) + 'px,0)';
+        }
+        if (header) header.classList.toggle('scrolled', y > 24);
+        ticking = false;
+      });
+    }
+    addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+
+</body>
+</html>
