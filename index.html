@@ -4,20 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bosko Property Management — Apartment Community Management | Salt Lake &amp; Utah County</title>
-<meta name="description" content="Bosko Property Management: full-service apartment community management in Salt Lake &amp; Utah County. Leasing, on-site staffing, maintenance, and owner accounting. Launching Summer 2027.">
+<meta name="description" content="Bosko Property Management: full-service apartment community management in Salt Lake &amp; Utah County. Free income leak audit, leasing, on-site staffing, maintenance, and owner accounting. Launching Fall 2027.">
 <link rel="canonical" href="https://rschow1.github.io/Bosko-Website/">
 <meta name="robots" content="index, follow">
 <!-- Open Graph / social share preview -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Bosko Property Management">
 <meta property="og:title" content="Bosko Property Management — Apartment Community Management">
-<meta property="og:description" content="Full-service apartment community management in Salt Lake &amp; Utah County. Leasing, on-site staffing, maintenance, and owner accounting. Launching Summer 2027.">
+<meta property="og:description" content="Full-service apartment community management in Salt Lake &amp; Utah County. Free income leak audit, leasing, on-site staffing, maintenance, and owner accounting. Launching Fall 2027.">
 <meta property="og:url" content="https://rschow1.github.io/Bosko-Website/">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bosko Property Management — Apartment Community Management">
-<meta name="twitter:description" content="Full-service apartment community management in Salt Lake &amp; Utah County. Launching Summer 2027.">
+<meta name="twitter:description" content="Full-service apartment community management in Salt Lake &amp; Utah County. Launching Fall 2027.">
+<link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-<link rel="apple-touch-icon" href="favicon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="styles.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -260,7 +261,7 @@
     color:var(--color-ash);
     margin-bottom:8px;
   }
-  .form-field input, .form-field textarea{
+  .form-field input, .form-field textarea, .form-field select{
     width:100%;
     background:#fff;
     border:1px solid rgba(42,38,34,0.15);
@@ -273,7 +274,7 @@
     resize:vertical;
     transition:border-color .2s ease;
   }
-  .form-field input:focus, .form-field textarea:focus{ border-color:var(--color-sage-deep); }
+  .form-field input:focus, .form-field textarea:focus, .form-field select:focus{ border-color:var(--color-sage-deep); }
 
   /* ====================================================================
      SCROLL ANIMATIONS (additive, progressive-enhancement).
@@ -340,7 +341,7 @@
      so keyboard/switch users had no focus indicator). Mouse clicks don't trigger it. */
   a:focus-visible, button:focus-visible, summary:focus-visible,
   .btn-primary:focus-visible, .btn-ghost:focus-visible, .btn-card-cta:focus-visible, .nav-icon-btn:focus-visible,
-  input:focus-visible, textarea:focus-visible{ outline:2px solid var(--color-sage-deep); outline-offset:2px; }
+  input:focus-visible, textarea:focus-visible, select:focus-visible{ outline:2px solid var(--color-sage-deep); outline-offset:2px; }
 
   /* Thin scroll-progress bar, sage, above the fixed nav. */
   #scroll-progress{
@@ -364,17 +365,13 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentEle
 <header class="fixed top-0 left-0 right-0 z-50">
   <div class="nav-glass">
     <div class="max-w-[1200px] mx-auto flex items-center justify-between px-6 md:px-8 py-4">
-      <a href="#" class="flex items-center gap-2">
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M14 2C17 6 19 11 19 15.5C19 19 16.8 21.5 14 23C11.2 21.5 9 19 9 15.5C9 11 11 6 14 2Z" stroke="var(--color-pure)" stroke-width="1.4" fill="none"/>
-          <circle cx="14" cy="13.5" r="2" stroke="var(--color-pure)" stroke-width="1.4"/>
-          <path d="M10 19.5L6.5 24" stroke="var(--color-pure)" stroke-width="1.4" stroke-linecap="round"/>
-          <path d="M18 19.5L21.5 24" stroke="var(--color-pure)" stroke-width="1.4" stroke-linecap="round"/>
-        </svg>
-        <span class="font-mono text-[12px] tracking-[0.15em] uppercase text-[var(--color-pure)]/90 hidden sm:inline">Bosko PM</span>
+      <a href="#" class="flex items-center rounded-sm transition-opacity hover:opacity-80 active:opacity-70" aria-label="Bosko Property Management, back to top">
+        <!-- Bosko logo: brand_assets/logo/svg/bosko-logo-color.svg (outlined; rebuild with tools/build_logo_assets.py) -->
+        <svg class="block h-9 w-auto" width="99" height="36" viewBox="0 0 2390 871" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><g fill="#2f4527"><circle cx="85.67" cy="85.67" r="85.67"/><circle cx="85.67" cy="285.57" r="85.67"/><circle cx="85.67" cy="485.48" r="85.67"/><circle cx="85.67" cy="685.38" r="85.67"/><circle cx="258.44" cy="385.52" r="85.67"/><circle cx="431.22" cy="485.48" r="85.67"/><circle cx="431.22" cy="685.38" r="85.67"/><circle cx="258.44" cy="785.33" r="85.67"/></g><circle cx="258.44" cy="585.43" r="85.67" fill="#c1592f"/><path fill="#2a2622" d="M808 835Q738 835 681 801.5Q624 768 590.5 711Q557 654 557 584Q557 514 590.5 458Q624 402 681 368.5Q738 335 808 335Q879 335 936 368Q993 401 1026.5 457.5Q1060 514 1060 584Q1060 654 1026.5 711Q993 768 936 801.5Q879 835 808 835ZM808 729Q849 729 880.5 710.5Q912 692 929.5 659Q947 626 947 584Q947 542 929 510Q911 478 880 459.5Q849 441 808 441Q768 441 736.5 459.5Q705 478 687.5 510Q670 542 670 584Q670 626 687.5 659Q705 692 736.5 710.5Q768 729 808 729Z M1258 835Q1218 835 1181 824.5Q1144 814 1113 794.5Q1082 775 1059 747L1129 677Q1154 706 1186.5 720.5Q1219 735 1260 735Q1297 735 1316 724Q1335 713 1335 692Q1335 670 1317 658Q1299 646 1270.5 637.5Q1242 629 1210.5 620Q1179 611 1150.5 595.5Q1122 580 1104 553Q1086 526 1086 483Q1086 437 1107.5 404Q1129 371 1168.5 353Q1208 335 1263 335Q1321 335 1365.5 355.5Q1410 376 1440 417L1370 487Q1349 461 1322 448Q1295 435 1260 435Q1227 435 1209 445Q1191 455 1191 474Q1191 494 1209 505Q1227 516 1255.5 524Q1284 532 1315.5 541.5Q1347 551 1375.5 567.5Q1404 584 1422 611.5Q1440 639 1440 683Q1440 753 1391 794Q1342 835 1258 835Z M1786 825 1583 580 1785 345H1916L1684 609L1689 546L1926 825ZM1481 825V105H1591V825Z M2138 835Q2068 835 2011 801.5Q1954 768 1920.5 711Q1887 654 1887 584Q1887 514 1920.5 458Q1954 402 2011 368.5Q2068 335 2138 335Q2209 335 2266 368Q2323 401 2356.5 457.5Q2390 514 2390 584Q2390 654 2356.5 711Q2323 768 2266 801.5Q2209 835 2138 835ZM2138 729Q2179 729 2210.5 710.5Q2242 692 2259.5 659Q2277 626 2277 584Q2277 542 2259 510Q2241 478 2210 459.5Q2179 441 2138 441Q2098 441 2066.5 459.5Q2035 478 2017.5 510Q2000 542 2000 584Q2000 626 2017.5 659Q2035 692 2066.5 710.5Q2098 729 2138 729Z"/></svg>
       </a>
 
       <nav class="hidden md:flex items-center gap-8 font-sans text-[16px] font-medium text-[var(--color-ash)]">
+        <a href="#audit" class="hover:text-[var(--color-pure)] transition-colors">Free Audit</a>
         <a href="#services" class="hover:text-[var(--color-pure)] transition-colors">Services</a>
         <a href="#pricing" class="hover:text-[var(--color-pure)] transition-colors">Pricing</a>
         <a href="#areas" class="hover:text-[var(--color-pure)] transition-colors">Coverage</a>
@@ -420,14 +417,14 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentEle
         <em style="font-style:italic;">Care</em> for your community.
       </h1>
 
-      <p class="mt-6 text-[18px] font-medium text-[var(--color-pure)] max-w-[460px] mx-auto lg:mx-0">Bosko is a full-service manager for apartment communities.</p>
+      <p class="mt-6 text-[18px] font-medium text-[var(--color-pure)] max-w-[460px] mx-auto lg:mx-0">Full-service management that finds the income your building is quietly losing.</p>
       <p class="mt-3 text-[17px] text-[var(--color-cloud)]/80 max-w-[460px] mx-auto lg:mx-0 leading-[1.55]">
-        Leasing, on-site staffing, maintenance, income collection, and owner accounting &mdash; one accountable team for your building, backed by software that never drops a detail.
+        Vacancy, rents behind the market, slow collections &mdash; Bosko spots the leaks and runs the building to close them. Leasing, on-site staffing, maintenance, and owner accounting from one accountable team.
       </p>
 
       <div class="mt-8 flex flex-wrap items-center justify-center lg:justify-start gap-4">
-        <a href="#contact" class="btn-primary">
-          <span>Request a Proposal</span>
+        <a href="#audit" class="btn-primary">
+          <span>Get a Free Income Leak Audit</span>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8H14M14 8L9 3M14 8L9 13" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
         <a href="#services" class="btn-ghost">
@@ -441,7 +438,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentEle
           <div class="laurel-text"><div class="name">Licensed</div><div class="sub">Utah Real Estate Agent</div></div>
           <svg width="20" height="34" viewBox="0 0 20 34" fill="none" style="transform:scaleX(-1)"><path d="M18 2C10 6 8 16 10 32" stroke="var(--color-sage-deep)" stroke-width="1.2"/><ellipse cx="12" cy="8" rx="4" ry="1.6" fill="var(--color-sage-deep)" opacity="0.9" transform="rotate(30 12 8)"/><ellipse cx="9.5" cy="14" rx="4" ry="1.6" fill="var(--color-sage-deep)" opacity="0.9" transform="rotate(20 9.5 14)"/><ellipse cx="8.5" cy="20" rx="4" ry="1.6" fill="var(--color-sage-deep)" opacity="0.9" transform="rotate(12 8.5 20)"/><ellipse cx="9" cy="26" rx="4" ry="1.6" fill="var(--color-sage-deep)" opacity="0.9" transform="rotate(6 9 26)"/></svg>
         </div>
-        <p class="font-mono text-[11px] tracking-[0.12em] uppercase text-[var(--color-ash)]">Launching Summer 2027 &middot; Salt Lake &amp; Utah County</p>
+        <p class="font-mono text-[11px] tracking-[0.12em] uppercase text-[var(--color-ash)]">Launching Fall 2027 &middot; Salt Lake &amp; Utah County</p>
       </div>
     </div>
 
@@ -451,7 +448,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentEle
         <div class="mt-5 space-y-4">
           <div class="flex items-start gap-3">
             <div class="w-8 h-8 shrink-0 rounded-full flex items-center justify-center" style="background:var(--color-sage-pale);"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M5.5 8L7 9.5L10.5 6" stroke="var(--color-sage-deep)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="8" r="6" stroke="var(--color-sage-deep)" stroke-width="1.3"/></svg></div>
-            <div><div class="text-[14px] font-medium" style="color:var(--color-pure);">Simple, transparent pricing</div><p class="text-[12px] mt-0.5" style="color:var(--color-ash);">Spelled out in one agreement. No markups, no junk fees.</p></div>
+            <div><div class="text-[14px] font-medium" style="color:var(--color-pure);">One flat rate, no extra fees</div><p class="text-[12px] mt-0.5" style="color:var(--color-ash);">Spelled out in one agreement. No markups, no tech fee.</p></div>
           </div>
           <div class="flex items-start gap-3">
             <div class="w-8 h-8 shrink-0 rounded-full flex items-center justify-center" style="background:var(--color-sage-pale);"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="5.5" r="2.5" stroke="var(--color-sage-deep)" stroke-width="1.3"/><path d="M3.5 13C3.5 10.5 5.5 9 8 9C10.5 9 12.5 10.5 12.5 13" stroke="var(--color-sage-deep)" stroke-width="1.3" stroke-linecap="round"/></svg></div>
@@ -471,15 +468,64 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentEle
   </div>
 </section>
 
+<!-- ================= FREE AUDIT ================= -->
+<section id="audit" class="section-gap px-6 md:px-8" style="margin-top:140px; scroll-margin-top:100px;">
+  <div class="max-w-[1200px] mx-auto text-center">
+    <span class="font-mono text-[12px] tracking-[0.1em] uppercase text-[var(--color-sage)]">Free Income Leak Audit</span>
+    <h2 class="font-display fs-h2 mt-3">
+      See what your building is leaving behind
+    </h2>
+    <p class="mt-6 text-[18px] font-medium text-[var(--color-pure)]">Send us your last 12 months of statements and a current rent roll.</p>
+    <p class="mt-2 text-[18px] font-light text-[var(--color-ash)] max-w-[640px] mx-auto leading-[1.5]">
+      In five business days you get a short report and a 30-minute walkthrough call. The plan is yours to keep, whether or not you ever hire us. We work at the category level, so no resident personal data is needed.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-4 mt-16 text-left">
+
+      <div class="card-tile tile-sage">
+        <span class="mono-label">01 &middot; The leak</span>
+        <h3 class="font-display fs-h3 mt-4"><em style="font-style:italic;">Your</em> lost income, in dollars a year</h3>
+        <p class="mt-3 text-[15px] text-white/80 leading-[1.5]">Vacancy against market, loss-to-lease, concessions, delinquency and bad debt, and other income that isn&rsquo;t being collected.</p>
+      </div>
+
+      <div class="card-tile tile-terracotta">
+        <span class="mono-label">02 &middot; Fee-stack X-ray</span>
+        <h3 class="font-display fs-h3 mt-4"><em style="font-style:italic;">What</em> you really pay your manager</h3>
+        <p class="mt-3 text-[15px] text-white/80 leading-[1.5]">The all-in cost once every add-on and pass-through is counted, set against the headline percentage on the contract.</p>
+      </div>
+
+      <div class="card-tile tile-terracotta">
+        <span class="mono-label">03 &middot; Early-warning flags</span>
+        <h3 class="font-display fs-h3 mt-4"><em style="font-style:italic;">Problems</em> that hide in the statements</h3>
+        <p class="mt-3 text-[15px] text-white/80 leading-[1.5]">Posting lags, voided payments, deferred billing &mdash; the patterns that show up months before anyone acts on them.</p>
+      </div>
+
+      <div class="card-tile tile-sage">
+        <span class="mono-label">04 &middot; 90-day plan</span>
+        <h3 class="font-display fs-h3 mt-4"><em style="font-style:italic;">A</em> plan you can act on right away</h3>
+        <p class="mt-3 text-[15px] text-white/80 leading-[1.5]">Prioritized fixes you can hand to your current manager or have us carry out.</p>
+      </div>
+
+    </div>
+
+    <div class="mt-12 flex flex-col items-center gap-3">
+      <a href="#contact" class="btn-primary">
+        <span>Request Your Free Audit</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8H14M14 8L9 3M14 8L9 13" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ================= PRICING ================= -->
 <section id="pricing" class="section-gap px-6 md:px-8" style="margin-top:140px; scroll-margin-top:100px;">
   <div class="max-w-[1200px] mx-auto text-center">
     <h2 class="font-display fs-h2">
-      Pricing that fits your building
+      One flat rate for every building
     </h2>
     <p class="mt-6 text-[18px] font-medium text-[var(--color-pure)]">One agreement per community. No consumer tiers.</p>
     <p class="mt-2 text-[18px] font-light text-[var(--color-ash)] max-w-[640px] mx-auto leading-[1.5]">
-      Your pricing is built around your building and spelled out in one agreement, in plain language, before you sign. The management fee scales with the size of your community &mdash; larger communities pay a lower percentage.
+      One percentage of the income your building collects, the same for every community and spelled out in one agreement, in plain language, before you sign. No separate technology or admin fee.
     </p>
 
     <div class="grid md:grid-cols-3 gap-4 mt-16 text-left">
@@ -491,9 +537,9 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentEle
       </div>
 
       <div class="card-tile tile-sage">
-        <span class="mono-label">Scales with size</span>
-        <h3 class="font-display fs-h3 mt-4"><em style="font-style:italic;">Priced</em> to your community</h3>
-        <p class="mt-3 text-[15px] text-white/80 leading-[1.5]">The management fee reflects your building's size &mdash; larger communities pay a lower percentage. Your on-site team is employed by us and included as part of the service.</p>
+        <span class="mono-label">One flat rate</span>
+        <h3 class="font-display fs-h3 mt-4"><em style="font-style:italic;">The</em> same rate for every community</h3>
+        <p class="mt-3 text-[15px] text-white/80 leading-[1.5]">The management fee is one percentage of the income your building collects, whatever its size, with no technology or admin fee on top. Costs your building already pays, like the property software, pass through at cost.</p>
       </div>
 
       <div class="card-tile tile-terracotta">
@@ -558,7 +604,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentEle
             </div>
             <div>
               <h3 class="fs-h3-sm font-medium">Fast Maintenance Response</h3>
-              <p class="mt-1.5 text-[14px] text-[var(--color-ash)] leading-[1.5]">Emergencies contacted within 1 hour. Every request triaged the moment it comes in.</p>
+              <p class="mt-1.5 text-[14px] text-[var(--color-ash)] leading-[1.5]">A 24/7 resident line answers every call. Emergencies contacted within 1 hour, every request triaged the moment it comes in.</p>
             </div>
           </div>
 
@@ -617,7 +663,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentEle
     <h2 class="font-display fs-h2">
       Full-service management
     </h2>
-    <p class="mt-6 text-[18px] font-medium text-[var(--color-pure)]">One team, every part of running your building.</p>
+    <p class="mt-6 text-[18px] font-medium text-[var(--color-pure)]">One team, every part of running your building and protecting its income.</p>
     <p class="mt-2 text-[18px] font-light text-[var(--color-ash)] max-w-[640px] mx-auto leading-[1.5]">
       From leasing every unit to closing the books each month &mdash; plus on-site staffing and capital-project management &mdash; handled by people who answer the phone, backed by software that never drops a detail.
     </p>
@@ -642,10 +688,11 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentEle
       <!-- Maintenance tiers -->
       <div class="card-tile tile-terracotta">
         <h3 class="font-display fs-h3 text-center"><em style="font-style:italic;">Respond</em> before small problems get big</h3>
-        <p class="mt-4 text-[16px] text-white/80 text-center leading-[1.5]">Every request is triaged the moment it comes in, so emergencies get handled now and routine repairs never slip through.</p>
+        <p class="mt-4 text-[16px] text-white/80 text-center leading-[1.5]">Our 24/7 resident line answers every call. Each request is triaged and dispatched the moment it comes in, and true emergencies go straight to a person, so routine repairs never slip through.</p>
         <div class="mock-panel mt-8 p-5">
           <span class="mono-label">Response Times</span>
           <div class="mt-4 space-y-3 text-[14px]">
+            <div class="flex justify-between"><span class="text-white/60">Resident line</span><span>Answered 24/7</span></div>
             <div class="flex justify-between"><span class="text-white/60">Emergency</span><span style="color:#ff9e8a;">Within 1 hour</span></div>
             <div class="flex justify-between"><span class="text-white/60">Urgent</span><span style="color:#ffd88a;">Acknowledged in 24 hrs</span></div>
             <div class="flex justify-between"><span class="text-white/60">Routine</span><span style="color:#a3e0af;">Complete in 3&ndash;7 days</span></div>
@@ -707,7 +754,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentEle
     <span class="font-mono text-[12px] tracking-[0.1em] uppercase text-[var(--color-sage)]">Where We&rsquo;ll Be</span>
     <h2 class="font-display fs-h2-sm mt-3">Launching across Salt Lake &amp; Utah County</h2>
     <p class="mt-4 text-[16px] font-light text-[var(--color-ash)] max-w-[560px] mx-auto leading-[1.6]">
-      Starting Summer 2027, we&rsquo;re taking on apartment communities in cities across both counties &mdash; including:
+      Starting Fall 2027, we&rsquo;re taking on apartment communities in cities across both counties &mdash; including:
     </p>
 
     <div class="mt-12 text-left max-w-[900px] mx-auto">
@@ -759,14 +806,22 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentEle
       Let&rsquo;s talk
     </h2>
     <p class="mt-6 text-[18px] font-light text-[var(--color-pure)]/85 max-w-[560px] mx-auto leading-[1.5]">
-      Own an apartment community in Salt Lake or Utah County? Tell us about your building and we'll put together a proposal.
+      Own an apartment community in Salt Lake or Utah County? Ask for a free Income Leak Audit, or tell us about your building and we&rsquo;ll put together a proposal.
     </p>
     <form id="contact-form" class="mt-10 text-left mx-auto" style="max-width:480px;" action="https://api.web3forms.com/submit" method="POST">
       <input type="hidden" name="access_key" value="fc6b9927-6c34-4f61-a635-2812a5750078">
-      <input type="hidden" name="subject" value="New owner inquiry — Bosko PM website">
+      <input type="hidden" name="subject" value="New owner inquiry (audit or proposal) — Bosko PM website">
       <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
 
       <div class="grid gap-4">
+        <div class="form-field">
+          <label for="cf-interest">What are you looking for?</label>
+          <select id="cf-interest" name="interest">
+            <option value="Free Income Leak Audit">Free Income Leak Audit</option>
+            <option value="Management proposal">A management proposal</option>
+            <option value="Not sure yet">Not sure yet</option>
+          </select>
+        </div>
         <div class="form-field">
           <label for="cf-name">Name</label>
           <input id="cf-name" name="name" type="text" required placeholder="Your name">
@@ -785,7 +840,7 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentEle
         </div>
         <div class="form-field">
           <label for="cf-message">Message</label>
-          <textarea id="cf-message" name="message" rows="4" required placeholder="Tell us about your community — location, unit count, and what you're looking for."></textarea>
+          <textarea id="cf-message" name="message" rows="4" required placeholder="Tell us about your community — location, unit count, and who manages it today."></textarea>
         </div>
       </div>
 
@@ -794,40 +849,36 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentEle
       </button>
       <p id="cf-status" class="mt-3 text-[13px]" style="color:var(--color-ash); min-height:1.2em;"></p>
     </form>
-    <p class="mt-6 text-[14px] text-[var(--color-ash)]">We're a small team getting ready for our Summer 2027 launch &mdash; reach out and we'll get back to you personally.</p>
+    <p class="mt-6 text-[14px] text-[var(--color-ash)]">We're a small team getting ready for our Fall 2027 launch &mdash; reach out and we'll get back to you personally.</p>
   </div>
 </section>
 
 <footer class="px-6 md:px-8 py-10" style="border-top:1px solid rgba(42,38,34,0.08);">
   <div class="max-w-[1200px] mx-auto flex flex-wrap items-center justify-between gap-6">
-    <div class="flex items-center gap-2">
-      <svg width="22" height="22" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M14 2C17 6 19 11 19 15.5C19 19 16.8 21.5 14 23C11.2 21.5 9 19 9 15.5C9 11 11 6 14 2Z" stroke="var(--color-pure)" stroke-width="1.4" fill="none"/>
-        <circle cx="14" cy="13.5" r="2" stroke="var(--color-pure)" stroke-width="1.4"/>
-        <path d="M10 19.5L6.5 24" stroke="var(--color-pure)" stroke-width="1.4" stroke-linecap="round"/>
-        <path d="M18 19.5L21.5 24" stroke="var(--color-pure)" stroke-width="1.4" stroke-linecap="round"/>
-      </svg>
-      <span class="font-mono text-[12px] tracking-[0.15em] uppercase text-[var(--color-pure)]/80">Bosko PM</span>
+    <div class="flex items-center">
+      <svg class="block h-9 w-auto" width="99" height="36" viewBox="0 0 2390 871" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bosko"><g fill="#2f4527"><circle cx="85.67" cy="85.67" r="85.67"/><circle cx="85.67" cy="285.57" r="85.67"/><circle cx="85.67" cy="485.48" r="85.67"/><circle cx="85.67" cy="685.38" r="85.67"/><circle cx="258.44" cy="385.52" r="85.67"/><circle cx="431.22" cy="485.48" r="85.67"/><circle cx="431.22" cy="685.38" r="85.67"/><circle cx="258.44" cy="785.33" r="85.67"/></g><circle cx="258.44" cy="585.43" r="85.67" fill="#c1592f"/><path fill="#2a2622" d="M808 835Q738 835 681 801.5Q624 768 590.5 711Q557 654 557 584Q557 514 590.5 458Q624 402 681 368.5Q738 335 808 335Q879 335 936 368Q993 401 1026.5 457.5Q1060 514 1060 584Q1060 654 1026.5 711Q993 768 936 801.5Q879 835 808 835ZM808 729Q849 729 880.5 710.5Q912 692 929.5 659Q947 626 947 584Q947 542 929 510Q911 478 880 459.5Q849 441 808 441Q768 441 736.5 459.5Q705 478 687.5 510Q670 542 670 584Q670 626 687.5 659Q705 692 736.5 710.5Q768 729 808 729Z M1258 835Q1218 835 1181 824.5Q1144 814 1113 794.5Q1082 775 1059 747L1129 677Q1154 706 1186.5 720.5Q1219 735 1260 735Q1297 735 1316 724Q1335 713 1335 692Q1335 670 1317 658Q1299 646 1270.5 637.5Q1242 629 1210.5 620Q1179 611 1150.5 595.5Q1122 580 1104 553Q1086 526 1086 483Q1086 437 1107.5 404Q1129 371 1168.5 353Q1208 335 1263 335Q1321 335 1365.5 355.5Q1410 376 1440 417L1370 487Q1349 461 1322 448Q1295 435 1260 435Q1227 435 1209 445Q1191 455 1191 474Q1191 494 1209 505Q1227 516 1255.5 524Q1284 532 1315.5 541.5Q1347 551 1375.5 567.5Q1404 584 1422 611.5Q1440 639 1440 683Q1440 753 1391 794Q1342 835 1258 835Z M1786 825 1583 580 1785 345H1916L1684 609L1689 546L1926 825ZM1481 825V105H1591V825Z M2138 835Q2068 835 2011 801.5Q1954 768 1920.5 711Q1887 654 1887 584Q1887 514 1920.5 458Q1954 402 2011 368.5Q2068 335 2138 335Q2209 335 2266 368Q2323 401 2356.5 457.5Q2390 514 2390 584Q2390 654 2356.5 711Q2323 768 2266 801.5Q2209 835 2138 835ZM2138 729Q2179 729 2210.5 710.5Q2242 692 2259.5 659Q2277 626 2277 584Q2277 542 2259 510Q2241 478 2210 459.5Q2179 441 2138 441Q2098 441 2066.5 459.5Q2035 478 2017.5 510Q2000 542 2000 584Q2000 626 2017.5 659Q2035 692 2066.5 710.5Q2098 729 2138 729Z"/></svg>
     </div>
     <nav class="flex flex-wrap items-center gap-6 font-mono text-[11px] tracking-[0.08em] uppercase text-[var(--color-ash)]">
+      <a href="#audit" class="hover:text-[var(--color-pure)] transition-colors">Free Audit</a>
       <a href="#services" class="hover:text-[var(--color-pure)] transition-colors">Services</a>
       <a href="#pricing" class="hover:text-[var(--color-pure)] transition-colors">Pricing</a>
       <a href="#areas" class="hover:text-[var(--color-pure)] transition-colors">Coverage</a>
       <a href="#contact" class="hover:text-[var(--color-pure)] transition-colors">Contact</a>
     </nav>
-    <p class="text-[12px] text-[var(--color-ash)] font-mono">Licensed Utah Real Estate Agent &middot; Salt Lake &amp; Utah County &middot; Launching Summer 2027</p>
+    <p class="text-[12px] text-[var(--color-ash)] font-mono">Licensed Utah Real Estate Agent &middot; Salt Lake &amp; Utah County &middot; Launching Fall 2027</p>
   </div>
 </footer>
 
 <script>
   // ---- Search ----
   const searchIndex = [
-    { title: "Services", snippet: "Full-service apartment management: leasing, on-site staffing, maintenance, income collection, owner accounting.", anchor: "#services" },
+    { title: "Free Income Leak Audit", snippet: "Send 12 months of statements; in five business days get your lost income in dollars, a fee-stack X-ray, early-warning flags and a 90-day plan, yours to keep.", anchor: "#audit" },
+    { title: "Services", snippet: "Full-service apartment management that finds lost income: leasing, on-site staffing, maintenance, income collection, owner accounting.", anchor: "#services" },
     { title: "Leasing & Resident Screening", snippet: "On-site teams lease every unit; every applicant screened the same way — income, credit, rental history, no exceptions.", anchor: "#services" },
-    { title: "Maintenance Response Times", snippet: "Emergency within 1 hour, urgent acknowledged in 24 hrs, routine complete in 3–7 days.", anchor: "#services" },
+    { title: "Maintenance Response Times", snippet: "24/7 resident line answers every call. Emergency within 1 hour, urgent acknowledged in 24 hrs, routine complete in 3–7 days.", anchor: "#services" },
     { title: "Income Collection", snippet: "Rent and other income — online payment by default, automated reminders, personal follow-up after 7 days unpaid.", anchor: "#services" },
     { title: "Owner Accounting & Reporting", snippet: "Monthly owner statement delivered the same day, photos attached over $150, portal access anytime.", anchor: "#services" },
-    { title: "Pricing", snippet: "One agreement per community. A management fee that scales with your building, plus on-site staffing and reporting — all spelled out in writing. Request a proposal.", anchor: "#pricing" },
+    { title: "Pricing", snippet: "One agreement per community. One flat management fee for every building, no technology fee, all spelled out in writing. Request a proposal.", anchor: "#pricing" },
     { title: "Simple, transparent pricing", snippet: "No markups on maintenance or vendor work, no junk fees. On-site staffing is included in the service, spelled out in your agreement.", anchor: "#pricing" },
     { title: "What You Get", snippet: "Transparent pricing, on-site team employed by us, documented screening, fast maintenance, monthly owner accounting, on-time income collection, licensed compliance, a team that answers.", anchor: "#guarantees" },
     { title: "Coverage", snippet: "Apartment communities in cities across Salt Lake and Utah County.", anchor: "#areas" },
